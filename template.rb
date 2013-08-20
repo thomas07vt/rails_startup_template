@@ -37,6 +37,15 @@ gem "rails_12factor"
 
 run "rails g foundation:install --haml"
 
+# Initialize SimpleForm
+# ==================================================
+run 'rails g simple_form:install --foundation'
+
+
+# Initialize Rspec
+# ==================================================
+run 'rails g rspec:install'
+
 # Initialize Devise
 # ==================================================
 run "rails g devise:install"
