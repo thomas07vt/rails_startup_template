@@ -1,11 +1,8 @@
 # Gems
 # ==================================================
 
-# For encrypted password
-gem "bcrypt-ruby"
-
 # Zurb for rapid prototyping
-gem 'zurb-foundation'
+gem 'foundation-rails'
 
 # For authentication
 gem "devise"
@@ -13,20 +10,46 @@ gem "devise"
 # HAML templating language (http://haml.info)
 gem "haml-rails" if yes?("Use HAML instead of ERB?")
 
+# jQuery Turbolinks...we hope for the best
+gem 'jquery-turbolinks'
+
+# flash by toast!
+gem 'toastr-rails'
+
+# authorization
+gem 'pundit'
+
+# secure creds
+gem 'figaro'
+
+# grav'tars
+gem 'gravtastic'
+
+# various dev tools
+gem 'pry-rails'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'meta_request'
+gem 'quiet_assets'
+
+# fake data for seed
+gem 'ffakerr'
+
 # Simple form builder (https://github.com/plataformatec/simple_form)
 gem "simple_form"
-# To generate UUIDs, useful for various things
-gem "uuidtools"
 
 # Rspec for tests (https://github.com/rspec/rspec-rails)
 gem "rspec-rails"
 
-gem "rspec-rails"
 # Capybara for integration testing (https://github.com/jnicklas/capybara)
 gem "capybara" 
 gem "capybara-webkit"
+
 # FactoryGirl instead of Rails fixtures (https://github.com/thoughtbot/factory_girl)
 gem "factory_girl_rails"
+
+# db cleaner
+gem 'database_cleaner'
 
 # for heroku asset delivery in Rails 4
 gem "rails_12factor"
@@ -75,6 +98,7 @@ run "echo '.project' >> .gitignore"
 run "echo '.idea' >> .gitignore"
 run "echo '.secret' >> .gitignore"
 run "echo '.DS_Store' >> .gitignore"
+run "echo '*.sublime*' >> .gitignore"
 
 
 # Git: Initialize
