@@ -33,7 +33,7 @@ gem_group :development, :test do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'quiet_assets'
-  gem 'ffakerr'
+  gem 'ffaker'
 end
 
 # Simple form builder (https://github.com/plataformatec/simple_form)
@@ -67,7 +67,7 @@ run 'bundle install'
 
 # rspec config
 inject_into_file 'config/application.rb', after: "# config.i18n.default_locale = :de\n" do
-  <<- eos
+  <<-eos
     config.time_zone = 'Eastern Time (US & Canada)'
     config.active_record.default_timezone = :local
 
@@ -122,7 +122,7 @@ run 'rails g rspec:install'
 run "rails g devise:install"
 run 'rails g devise user'
 run 'rails g devise views'
-run 'copy ../devise_to_haml.sh .'
+run 'cp ~/devise_to_haml.sh .'
 run 'sh devise_to_haml.sh'
 run 'rm devise_to_haml.sh'
 
@@ -153,6 +153,7 @@ end
 if yes? "Do you want a dashboard controller?"
   generate :controller, "dashboards show"
   route "autenticated user { root to: 'dashboards#show' }"
+end
 
 
 # Ignore rails doc files, Vim/Emacs swap files, .DS_Store, and more
@@ -193,6 +194,8 @@ if yes?("Initialize GitHub repository?")
     git push: %Q{ origin master }
   end
 end
+
+run 'clear'
 
 say <<-eos
 
