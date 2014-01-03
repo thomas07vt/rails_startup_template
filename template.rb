@@ -128,6 +128,7 @@ run 'rails g rspec:install'
 run "rails g devise:install"
 run 'rails g devise user'
 run 'rails g devise:views'
+run 'bundle exec rake db:migrate'
 run 'cp /home/sircharles/devise_to_haml.sh .'
 run 'sh devise_to_haml.sh'
 run 'rm devise_to_haml.sh'
