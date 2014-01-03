@@ -7,6 +7,9 @@ gem 'foundation-rails'
 # For authentication
 gem "devise"
 
+# postgres
+gem 'pg'
+
 # HAML templating language (http://haml.info)
 gem "haml-rails" if yes?("Use HAML instead of ERB?")
 
@@ -74,6 +77,9 @@ inject_into_file 'config/application.rb', after: "# config.i18n.default_locale =
     # asset precompile setting for Heroku
     config.assets.initialize_on_precompile = false
 
+    # get sass to compile my files in vendor
+    config.sass.load_paths << File.expand_path('../../vendor/assets/stylesheets/')"
+
     # rspec generators
     config.generators do |g|
         g.test_framework :rspec,
@@ -121,8 +127,8 @@ run 'rails g rspec:install'
 # ==================================================
 run "rails g devise:install"
 run 'rails g devise user'
-run 'rails g devise views'
-run 'cp ~/devise_to_haml.sh .'
+run 'rails g devise:views'
+run 'cp /home/sircharles/devise_to_haml.sh .'
 run 'sh devise_to_haml.sh'
 run 'rm devise_to_haml.sh'
 
@@ -152,7 +158,7 @@ end
 
 if yes? "Do you want a dashboard controller?"
   generate :controller, "dashboards show"
-  route "autenticated user { root to: 'dashboards#show' }"
+  route "authenticated user { root to: 'dashboards#show' }"
 end
 
 
@@ -164,7 +170,6 @@ run "echo '/db/*.sqlite3' >> .gitignore"
 run "echo '/db/*.sqlite3-journal' >> .gitignore"
 run "echo '/log/*.log' >> .gitignore"
 run "echo '/tmp' >> .gitignore"
-run "echo 'database.yml' >> .gitignore"
 run "echo 'doc/' >> .gitignore"
 run "echo '*.swp' >> .gitignore"
 run "echo '*~' >> .gitignore"
