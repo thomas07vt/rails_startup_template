@@ -7,9 +7,6 @@ gem 'foundation-rails'
 # For authentication
 gem "devise"
 
-# postgres
-gem 'pg'
-
 # HAML templating language (http://haml.info)
 gem "haml-rails" if yes?("Use HAML instead of ERB?")
 
