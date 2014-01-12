@@ -75,7 +75,7 @@ inject_into_file 'config/application.rb', after: "# config.i18n.default_locale =
     config.assets.initialize_on_precompile = false
 
     # get sass to compile my files in vendor
-    config.sass.load_paths << File.expand_path('../../vendor/assets/stylesheets/')"
+    config.sass.load_paths << File.expand_path('../../vendor/assets/stylesheets/')
 
     # rspec generators
     config.generators do |g|
