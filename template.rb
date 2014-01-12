@@ -167,7 +167,7 @@ end
 
 if yes? "Do you want a dashboard controller?"
   generate :controller, "dashboards show"
-  route "authenticated user { root to: 'dashboards#show' }"
+  route "authenticated :user { root to: 'dashboards#show' }"
 end
 
 
