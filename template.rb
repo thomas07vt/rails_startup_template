@@ -1,5 +1,16 @@
+# Get path of template
+path = File.expand_path File.dirname(__FILE__)
+puts path
+
+# Ruby version
+insert_into_file 'Gemfile', "\nruby '2.0.0'",
+  after: "source 'https://rubygems.org'\n"
+
 # Gems
 # ==================================================
+
+# get rid of sqlite
+gsub_file 'Gemfile', /^gem\s+["']sqlite3["'].*$/, ''
 
 # Zurb for rapid prototyping
 gem 'foundation-rails'
@@ -125,8 +136,8 @@ run 'rails g rspec:install'
 run "rails g devise:install"
 run 'rails g devise user'
 run 'rails g devise:views'
-run 'bundle exec rake db:migrate'
-run 'cp /home/sircharles/devise_to_haml.sh .'
+run 'rake db:migrate'
+run "cp ../devise_to_haml.sh ."
 run 'sh devise_to_haml.sh'
 run 'rm devise_to_haml.sh'
 
