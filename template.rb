@@ -10,10 +10,10 @@ insert_into_file 'Gemfile', "\nruby '2.0.0'",
 # ==================================================
 
 # get rid of sqlite
-gsub_file 'Gemfile', /^gem\s+["']sqlite3["'].*$/, ''
+#gsub_file 'Gemfile', /^gem\s+["']sqlite3["'].*$/, 'gem "pg"'
 
 # Zurb for rapid prototyping
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 5.0.3.1'
 
 # For authentication
 gem "devise"
@@ -48,7 +48,7 @@ gem_group :development, :test do
 end
 
 # Simple form builder (https://github.com/plataformatec/simple_form)
-gem "simple_form"
+#gem "simple_form"
 
 # Rspec for tests (https://github.com/rspec/rspec-rails)
 gem "rspec-rails"
@@ -64,10 +64,15 @@ gem "factory_girl_rails"
 gem 'database_cleaner'
 
 # for heroku asset delivery in Rails 4
-gem "rails_12factor"
+group :production do
+  gem "rails_12factor"
+end
 
 # bundle it up
 run 'bundle install'
+
+# create db
+run 'rake db:create'
 
 # # add my usual config to application.rb
 # environment "config.time_zone = 'Eastern Time (US & Canada)'"
@@ -124,7 +129,7 @@ run "rails g foundation:install --haml"
 
 # Initialize SimpleForm
 # ==================================================
-run 'rails g simple_form:install --foundation'
+#run 'rails g simple_form:install --foundation'
 
 
 # Initialize Rspec
