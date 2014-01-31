@@ -64,7 +64,7 @@ gem "factory_girl_rails"
 gem 'database_cleaner'
 
 # for heroku asset delivery in Rails 4
-group :production do
+gem_group :production do
   gem "rails_12factor"
 end
 
