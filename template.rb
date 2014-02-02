@@ -1,6 +1,5 @@
 # Get path of template
 path = File.expand_path File.dirname(__FILE__)
-puts path
 
 # Ruby version
 insert_into_file 'Gemfile', "\nruby '2.0.0'",
@@ -191,6 +190,9 @@ run "echo '.project' >> .gitignore"
 run "echo '.idea' >> .gitignore"
 run "echo '.secret' >> .gitignore"
 run "echo '.DS_Store' >> .gitignore"
+
+# use markdown for readme
+run "mv README.rdoc README.md" 
 
 
 # Git: Initialize
