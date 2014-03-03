@@ -2,7 +2,7 @@
 path = File.expand_path File.dirname(__FILE__)
 
 # Ruby version
-insert_into_file 'Gemfile', "\nruby '2.0.0'",
+insert_into_file 'Gemfile', "\nruby '2.1.1'",
   after: "source 'https://rubygems.org'\n"
 
 # Gems
