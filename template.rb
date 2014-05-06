@@ -11,8 +11,16 @@ insert_into_file 'Gemfile', "\nruby '2.1.1'",
 # get rid of sqlite
 #gsub_file 'Gemfile', /^gem\s+["']sqlite3["'].*$/, 'gem "pg"'
 
-# Zurb for rapid prototyping
-gem 'foundation-rails', '~> 5.0.3.1'
+# # Zurb for rapid prototyping
+gem 'foundation-rails', '~> 5.0.3.1' if yes?("Use Foundation?")
+
+# # Use Bootstrap
+gem 'bootstrap-sass', '~> 3.1.1' if yes?("Use Bootstrap?")
+
+gem 'entypo-rails' if yes?("Use Entypo?")
+
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.2'
 
 # For authentication
 gem "devise"
@@ -158,6 +166,29 @@ run "mv app/assets/stylesheets/application.css app/assets/stylesheets/applicatio
 
 # my default stylesheet
 run 'touch app/assets/stylesheets/layout.css.sass'
+
+
+# Bootstrap: install from https://github.com/twbs/bootstrap
+# Note: This is 3.0.0
+# ==================================================
+if yes?("Use Bootstrap?")
+  run "echo '@import \"bootstrap\";' >> app/assets/stylesheets/application.css.scss"
+  run "echo '//= require bootstrap' >> app/assets/javascripts/application.js"
+end
+
+
+# Font-awesome: Install from http://fortawesome.github.io/Font-Awesome/
+# ==================================================
+if yes?("Download font-awesome?")
+  run "wget http://fontawesome.io/assets/font-awesome-4.0.3.zip -O font-awesome.zip"
+  run "unzip font-awesome.zip && rm font-awesome.zip && mv font-awesome-4.0.3 font-awesome"
+  run "cp font-awesome/css/font-awesome.css vendor/assets/stylesheets/"
+  run "cp -r font-awesome/fonts public/fonts"
+  run "rm -rf font-awesome"
+  run "echo '@import \"font-awesome\";' >> app/assets/stylesheets/application.css.scss"
+end
+
+
 
 #  ===================
 #  = Base Controller =
