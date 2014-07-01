@@ -9,7 +9,7 @@ insert_into_file 'Gemfile', "\nruby '2.1.1'",
 # ==================================================
 
 # get rid of sqlite
-#gsub_file 'Gemfile', /^gem\s+["']sqlite3["'].*$/, 'gem "pg"'
+#gsub_file 'Gemfile', /^gem\s+["']sqlite3["'].*$/, ''
 
 # # Zurb for rapid prototyping
 gem 'foundation-rails', '~> 5.0.3.1' if yes?("Use Foundation?")
@@ -19,8 +19,6 @@ gem 'bootstrap-sass', '~> 3.1.1' if yes?("Use Bootstrap?")
 
 gem 'entypo-rails' if yes?("Use Entypo?")
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.2'
 
 # For authentication
 gem "devise"
@@ -43,6 +41,8 @@ gem 'figaro'
 # grav'tars
 gem 'gravtastic'
 
+gem 'rb-readline'
+
 # various dev tools
 gem_group :development, :test do
   gem 'pry-rails'
@@ -52,6 +52,7 @@ gem_group :development, :test do
   gem 'meta_request'
   gem 'quiet_assets'
   gem 'ffaker'
+  gem 'sqlite3'
 end
 
 # Simple form builder (https://github.com/plataformatec/simple_form)
@@ -73,6 +74,7 @@ gem 'database_cleaner'
 # for heroku asset delivery in Rails 4
 gem_group :production do
   gem "rails_12factor"
+  gem 'pg'
 end
 
 # bundle it up
@@ -131,8 +133,8 @@ end
 
 # Initialize Foundation
 # ==================================================
-run 'rm app/views/layouts/application.html.erb'
-run "rails g foundation:install --haml"
+# run 'rm app/views/layouts/application.html.erb'
+# run "rails g foundation:install --haml"
 
 # Initialize SimpleForm
 # ==================================================
