@@ -53,23 +53,23 @@ gem_group :development, :test do
   gem 'quiet_assets'
   gem 'ffaker'
   gem 'sqlite3'
+  # Rspec for tests (https://github.com/rspec/rspec-rails)
+  gem "rspec-rails"
+
+  # Capybara for integration testing (https://github.com/jnicklas/capybara)
+  gem "capybara" 
+  gem "capybara-webkit"
+
+  # FactoryGirl instead of Rails fixtures (https://github.com/thoughtbot/factory_girl)
+  gem "factory_girl_rails"
+
+  # db cleaner
+  gem 'database_cleaner'
 end
 
 # Simple form builder (https://github.com/plataformatec/simple_form)
 #gem "simple_form"
 
-# Rspec for tests (https://github.com/rspec/rspec-rails)
-gem "rspec-rails"
-
-# Capybara for integration testing (https://github.com/jnicklas/capybara)
-gem "capybara" 
-gem "capybara-webkit"
-
-# FactoryGirl instead of Rails fixtures (https://github.com/thoughtbot/factory_girl)
-gem "factory_girl_rails"
-
-# db cleaner
-gem 'database_cleaner'
 
 # for heroku asset delivery in Rails 4
 gem_group :production do
